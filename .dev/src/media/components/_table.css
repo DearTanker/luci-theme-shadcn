@@ -109,7 +109,7 @@ table.table,
     }
 
     &.cbi-value-field {
-      @apply break-all;
+      @apply wrap-anywhere md:max-w-prose;
     }
 
     &.cbi-section-actions > div > .cbi-button {
@@ -155,7 +155,7 @@ table.table,
         /* Mobile cards: value fields stack one per row —
            the row title and long match-rule cells get the full width — while
            display-only widgets below pair up two per row. */
-        @apply mb-1 basis-full self-start text-left;
+        @apply mb-1 max-w-none basis-full self-start text-left;
 
         &[data-widget="CBI.DummyValue"],
         &[data-widget="CBI.Button"],
