@@ -237,27 +237,10 @@ html[data-sidebar-collapsed="true"] #sidebar {
   @apply border-panel-border bg-panel-bg flex flex-1 flex-col overflow-hidden rounded-xl border shadow-sm max-md:rounded-none max-md:border-none max-md:shadow-none;
 }
 
-/* Collapsing snaps the sidebar width (one reflow) and slides the card in
-   from where it was; #main-wrapper clips it. data-sidebar-anim is set on the
-   first toggle, so a page load never plays it. */
-@keyframes shadcn-rail-in {
-  from {
-    translate: calc(220px - 3rem);
-  }
-}
-
-@keyframes shadcn-rail-out {
-  from {
-    translate: calc(3rem - 220px);
-  }
-}
-
-html[data-sidebar-anim] .content-card {
-  @apply md:animate-[shadcn-rail-out_200ms_ease-out];
-}
-
-html[data-sidebar-anim][data-sidebar-collapsed="true"] .content-card {
-  @apply md:animate-[shadcn-rail-in_200ms_ease-out];
+/* The rail width eases and #main-wrapper (flex-1) follows it frame by frame.
+   data-sidebar-anim is set on the first toggle, so a page load never plays it. */
+html[data-sidebar-anim] #sidebar {
+  @apply md:[transition:width_200ms_var(--ease-out)];
 }
 
 /* ── Card header ─────────────────────────────────────────────────── */
