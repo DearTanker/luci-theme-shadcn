@@ -318,15 +318,19 @@ button.topbar-icon-btn {
 }
 
 .topbar-indicators {
-  @apply flex items-center gap-2;
+  @apply flex items-center;
 
   /* LuCI-owned spans: icon via ::before mask only (no JS / no img) */
   span[data-indicator] {
     > img {
       @apply hidden;
     }
-    @apply text-muted-foreground relative inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-[0px] [transition:color_.15s,background-color_.15s,border-color_.15s];
+    @apply text-muted-foreground relative inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-[0px] [transition:color_.15s,background-color_.15s,border-color_.15s,width_.15s_ease-out,opacity_.15s_ease-out,margin-left_.15s_ease-out] starting:w-0 starting:opacity-0;
     @apply before:relative before:block before:size-4 before:shrink-0 before:bg-current before:[mask-size:cover] before:[mask-position:center] before:[mask-repeat:no-repeat];
+
+    & + span[data-indicator] {
+      @apply ml-2 starting:ml-0;
+    }
 
     &:hover {
       @apply bg-muted text-foreground;
@@ -358,7 +362,7 @@ button.topbar-icon-btn {
 /* ── Maincontent ──────────────────────────────────────────────────── */
 
 #maincontent {
-  @apply flex-1 overflow-y-auto p-6 max-md:p-4;
+  @apply flex-1 [scrollbar-gutter:stable] overflow-y-auto p-6 max-md:p-4;
 
   h1 {
     @apply mb-4 border-0 pl-0 text-2xl font-semibold tracking-tight;
