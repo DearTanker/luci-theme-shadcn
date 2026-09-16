@@ -1,5 +1,5 @@
 .cbi-dropdown {
-  @apply relative inline-flex h-fit max-w-full min-w-fit shrink-0 items-center p-0 whitespace-nowrap transition-colors duration-200;
+  @apply relative inline-flex h-fit max-w-full min-w-fit shrink-0 items-center p-0 whitespace-nowrap [transition:color_.2s,background-color_.2s,border-color_.2s];
 
   &[disabled] {
     @apply pointer-events-none opacity-40;

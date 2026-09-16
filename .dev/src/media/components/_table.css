@@ -34,7 +34,7 @@ table.table,
 
   tr,
   .tr {
-    @apply hover:bg-label-surface max-md:border-border transition-colors duration-200 max-md:flex max-md:flex-wrap max-md:border-b max-md:px-2 max-md:py-2;
+    @apply hover:bg-label-surface max-md:border-border [transition:background-color_.2s] max-md:flex max-md:flex-wrap max-md:border-b max-md:px-2 max-md:py-2;
 
     &:first-child {
       &:not([data-title]) {

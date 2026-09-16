@@ -4,7 +4,7 @@
   /* Mobile drawer: translate only; `transition-all` would also ease
      background-color and lag the sidebar behind the content on theme flips. */
   @apply bg-sidebar-bg flex h-full w-[220px] shrink-0 flex-col overflow-hidden;
-  @apply max-md:fixed max-md:top-0 max-md:left-0 max-md:z-40 max-md:w-[240px] max-md:-translate-x-full max-md:shadow-xl max-md:transition-transform max-md:duration-200;
+  @apply max-md:fixed max-md:top-0 max-md:left-0 max-md:z-40 max-md:w-[240px] max-md:-translate-x-full max-md:shadow-xl max-md:[transition:translate_.2s];
   /* Drawer height tracks the dynamic viewport so its bottom edge meets the
      Safari toolbar smoothly instead of jumping when the toolbar shows/hides. */
   @apply max-md:h-dvh;
@@ -54,7 +54,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
 }
 
 .sidebar-toggle {
-  @apply text-sidebar-muted flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 transition-colors;
+  @apply text-sidebar-muted flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 [transition:color_.15s,background-color_.15s,border-color_.15s];
 
   &:hover {
     @apply bg-sidebar-accent text-sidebar-accent-fg;
@@ -82,7 +82,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
 }
 
 .sidebar-nav-parent {
-  @apply text-sidebar-muted flex w-full cursor-pointer appearance-none items-center justify-start gap-2.5 rounded-md border-0 bg-transparent px-2 py-1.5 text-left text-sm font-medium transition-colors duration-150;
+  @apply text-sidebar-muted flex w-full cursor-pointer appearance-none items-center justify-start gap-2.5 rounded-md border-0 bg-transparent px-2 py-1.5 text-left text-sm font-medium [transition:color_.15s,background-color_.15s,border-color_.15s];
 
   &:hover {
     @apply bg-sidebar-accent text-sidebar-accent-fg;
@@ -101,7 +101,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
   }
 
   .sidebar-chevron {
-    @apply ml-auto shrink-0 transition-transform duration-200;
+    @apply ml-auto shrink-0 [transition:rotate_.2s];
     svg,
     img {
       @apply h-3.5 w-3.5;
@@ -132,7 +132,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
    opening bounces every row below them. visibility transitions too, so the
    collapsed links leave the tab order only once the close has finished. */
 .sidebar-accordion-sub {
-  @apply invisible grid grid-rows-[0fr] overflow-hidden opacity-0 transition-[grid-template-rows,opacity,visibility] duration-200 ease-out;
+  @apply invisible grid grid-rows-[0fr] overflow-hidden opacity-0 [transition:grid-template-rows_.2s_var(--ease-out),opacity_.2s_var(--ease-out),visibility_.2s_var(--ease-out)];
 
   > * {
     @apply min-h-0 self-start;
@@ -156,7 +156,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
 }
 
 .sidebar-sub-link {
-  @apply text-sidebar-muted block rounded-md px-2 py-1.5 text-sm no-underline transition-colors;
+  @apply text-sidebar-muted block rounded-md px-2 py-1.5 text-sm no-underline [transition:color_.15s,background-color_.15s,border-color_.15s];
 
   &:hover {
     @apply bg-sidebar-accent text-sidebar-accent-fg;
@@ -178,7 +178,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
 }
 
 .sidebar-collapsed-popover-link {
-  @apply text-sidebar-muted mx-1 block rounded-sm px-2 py-1.5 text-sm no-underline transition-colors;
+  @apply text-sidebar-muted mx-1 block rounded-sm px-2 py-1.5 text-sm no-underline [transition:color_.15s,background-color_.15s,border-color_.15s];
 
   &:hover {
     @apply bg-sidebar-accent text-sidebar-accent-fg;
@@ -197,7 +197,7 @@ html[data-sidebar-collapsed="true"] #sidebar {
 }
 
 .sidebar-logout {
-  @apply text-sidebar-muted flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm no-underline transition-colors;
+  @apply text-sidebar-muted flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm no-underline [transition:color_.15s,background-color_.15s,border-color_.15s];
 
   &:hover {
     @apply bg-sidebar-accent text-sidebar-accent-fg;
@@ -274,7 +274,7 @@ html[data-sidebar-anim][data-sidebar-collapsed="true"] .content-card {
 }
 
 .topbar-hamburger {
-  @apply text-muted-foreground hidden h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 transition-colors max-md:flex;
+  @apply text-muted-foreground hidden h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 [transition:color_.15s,background-color_.15s,border-color_.15s] max-md:flex;
 
   &:hover {
     @apply bg-muted;
@@ -306,7 +306,7 @@ html[data-sidebar-anim][data-sidebar-collapsed="true"] .content-card {
 }
 
 button.topbar-icon-btn {
-  @apply text-muted-foreground inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 transition-colors;
+  @apply text-muted-foreground inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 [transition:color_.15s,background-color_.15s,border-color_.15s];
 
   &:hover {
     @apply bg-muted text-foreground;
@@ -325,7 +325,7 @@ button.topbar-icon-btn {
     > img {
       @apply hidden;
     }
-    @apply text-muted-foreground relative inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-[0px] transition-colors;
+    @apply text-muted-foreground relative inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-[0px] [transition:color_.15s,background-color_.15s,border-color_.15s];
     @apply before:relative before:block before:size-4 before:shrink-0 before:bg-current before:[mask-size:cover] before:[mask-position:center] before:[mask-repeat:no-repeat];
 
     &:hover {
@@ -432,7 +432,7 @@ button.topbar-icon-btn {
 #sidebar-overlay {
   /* Absolute, not fixed: iOS Safari 26 tints its bars from edge-touching
      fixed elements' background-color, opacity notwithstanding. */
-  @apply bg-overlay-base-a50 pointer-events-none absolute inset-0 z-30 opacity-0 transition-opacity duration-200 md:hidden;
+  @apply bg-overlay-base-a50 pointer-events-none absolute inset-0 z-30 opacity-0 [transition:opacity_.2s] md:hidden;
 
   &.active {
     @apply pointer-events-auto opacity-100;
