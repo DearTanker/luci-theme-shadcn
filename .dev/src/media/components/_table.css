@@ -74,7 +74,7 @@ table.table,
 
   th,
   .th {
-    @apply border-border bg-label-surface border-b px-3 py-2.5 text-left text-sm font-medium backdrop-blur-sm max-md:hidden;
+    @apply border-border bg-label-surface border-b px-3 py-2.5 text-left text-sm font-medium max-md:hidden;
 
     &[width="100%"] {
       @apply w-full;
