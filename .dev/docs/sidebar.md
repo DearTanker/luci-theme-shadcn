@@ -14,4 +14,4 @@ Restored HTML loses inline JS handlers (`innerHTML` serialization), so anything 
 
 **Bump `v` whenever the sidebar markup changes shape.**
 
-Cross-document `@view-transition` rules live in `components/_view-transitions.css` (only `#sidebar` gets its own snapshot group — the topbar must not, or its top-layer snapshot escapes `.content-card`'s rounded-corner clipping during transitions); they assume the cache keeps the sidebar's first frame populated.
+The theme captures no view transitions (`components/_view-transitions.css` sets `:root { view-transition-name: none }`); swapped and freshly loaded content fades in instead. On desktop, collapsing snaps the sidebar width and slides `.content-card` from its old offset (`_layout.css`); `sidebar-shadcn.js` sets `html[data-sidebar-anim]` on the first toggle so a page load never plays that slide.
