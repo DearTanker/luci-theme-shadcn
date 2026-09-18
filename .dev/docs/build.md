@@ -13,6 +13,8 @@
 
 `htdocs/` is generated output checked into git. Rebuild it with `pnpm build`, or trigger the manual `frontend-assets-build.yml` workflow, which builds and commits `htdocs/**`.
 
+`custom.css` belongs in `.dev/public/shadcn/` (and is copied to `htdocs/luci-static/shadcn/custom.css`). `header.ut` checks for it at render time and loads it after every other theme, page-patch, node, and inline stylesheet, so it is the final theme CSS in the cascade. The file is also available to the Vite dev server.
+
 ## Terser options that are load-bearing
 
 `.dev/src/resource/*.js` goes through terser (compress + local-scope mangle, no bundling); each file stays a standalone LuCI `L.require()`-able module. Two options must not be dropped:

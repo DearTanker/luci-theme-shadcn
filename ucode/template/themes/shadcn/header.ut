@@ -14,6 +14,9 @@
 
 	const page_segs = length(ctx?.request_path) ? ctx.request_path : (ctx?.path || []);
 	const page = join('-', page_segs);
+	let custom_css = false;
+	for (let f in lsdir(`/www${media}`) ?? [])
+		if (f == 'custom.css') custom_css = true;
 	// On-demand patches — see "On-demand patches" in CLAUDE.md.
 	let patch_files = [], patch_scripts = [], patch_all = [];
 	if (!blank_page) {
@@ -78,6 +81,9 @@
 		{% endif %}
 		{% if (css): %}
 		<style data-luci-shell>{{ css }}</style>
+		{% endif %}
+		{% if (custom_css): %}
+		<link rel="stylesheet" href="{{ media }}/custom.css" data-luci-shell>
 		{% endif %}
 		<script src="{{ dispatcher.build_url('admin/translations', dispatcher.lang) }}"></script>
 		<script src="{{ resource }}/cbi.js"></script>
