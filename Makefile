@@ -15,10 +15,6 @@ PKG_LICENSE:=Apache-2.0
 LUCI_MINIFY_CSS:=
 CONFIG_LUCI_CSSTIDY:=
 
-define Package/luci-theme-shadcn/conffiles
-/www/luci-static/shadcn/custom.css
-endef
-
 include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
