@@ -6,7 +6,7 @@
 
 {%
 	import { getuid, getspnam } from 'luci.core';
-	import { lsdir } from 'fs';
+	import { access, lsdir } from 'fs';
 
 	const boardinfo = ubus.call('system', 'board') ?? {};
 	const rootsp = getspnam('root');
@@ -14,9 +14,7 @@
 
 	const page_segs = length(ctx?.request_path) ? ctx.request_path : (ctx?.path || []);
 	const page = join('-', page_segs);
-	let custom_css = false;
-	for (let f in lsdir(`/www${media}`) ?? [])
-		if (f == 'custom.css') custom_css = true;
+	const custom_css = access(`/www${media}/custom.css`, 'f') == true;
 	// On-demand patches — see "On-demand patches" in CLAUDE.md.
 	let patch_files = [], patch_scripts = [], patch_all = [];
 	if (!blank_page) {
